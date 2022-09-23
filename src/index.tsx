@@ -1,6 +1,6 @@
 import * as React from 'react';
 import randiman from './lib/random'
-import { BACKGROUND_COLORS, TEXT_COLORS, SHAPE_COLORS } from './lib/colors'
+import { BACKGROUND_COLORS, SHAPE_COLORS } from './lib/colors'
 import Shape, { ShapeNames } from './shape/Shape'
 import { styled, setup } from 'goober'
 
@@ -17,7 +17,6 @@ const DEFAULTS = {
   style: "character",
   size: 32,
   shadow: false,
-  
   border: false,
   borderSize: 2,
   borderColor: "#fff"
@@ -70,9 +69,7 @@ const Text = styled('p')<{ color: string, size: number }>`
   padding: 0;
   text-align: center;
   box-sizing: border-box;
-
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
-
   font-size: ${p => Math.round(p.size / 100 * 37)}px;
   color: #${p => p.color};
   line-height: 0;
@@ -99,14 +96,14 @@ interface Params
 
 export default function Avvvatars(params: Params)
 {
-  const { 
+  const {
     style = DEFAULTS.style,
-    displayValue, 
-    value, 
+    displayValue,
+    value,
     radius,
-    size = DEFAULTS.size, 
-    shadow = DEFAULTS.shadow, 
-    border = DEFAULTS.border, 
+    size = DEFAULTS.size,
+    shadow = DEFAULTS.shadow,
+    border = DEFAULTS.border,
     borderSize = DEFAULTS.borderSize,
     borderColor = DEFAULTS.borderColor
   } = params
@@ -116,31 +113,31 @@ export default function Avvvatars(params: Params)
 
   // generate unique random for given value
   // there is 20 colors in array so generate between 0 and 19
-  const key = randiman({ value, min: 0, max: 19 });
+  const key = randiman({ value, min: 0, max: BACKGROUND_COLORS.length - 1 });
   // there is 60 shapes so generate between 1 and 60
   const shapeKey = randiman({ value, min: 1, max: 60 })
 
   return (
-    <Wrapper 
-      size={size} 
-      color={BACKGROUND_COLORS[key]} 
-      $shadow={shadow} 
-      $border={border} 
+    <Wrapper
+      size={size}
+      color={BACKGROUND_COLORS[key].replace('#', '')}
+      $shadow={shadow}
+      $border={border}
       $borderSize={borderSize}
       $borderColor={borderColor}
       $radius={radius}
     >
       {style === 'character' ?
-        <Text 
-          color={TEXT_COLORS[key]}
+        <Text
+          color={SHAPE_COLORS[key].replace('#', '')}
           size={size}
         >
           {name}
         </Text>
         :
-        <Shape 
+        <Shape
           name={`Shape${shapeKey}` as ShapeNames}
-          color={SHAPE_COLORS[key]}
+          color={SHAPE_COLORS[key].replace('#', '')}
           size={Math.round((size) / 100 * 50)}
         />
       }

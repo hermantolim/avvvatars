@@ -2,7 +2,7 @@
 'use strict'
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./avvvatars-react.cjs.production.min.js')
+  module.exports = require('./avvvatars-react-alt.cjs.production.min.js')
 } else {
-  module.exports = require('./avvvatars-react.cjs.development.js')
+  module.exports = require('./avvvatars-react-alt.cjs.development.js')
 }
