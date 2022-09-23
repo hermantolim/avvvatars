@@ -125,32 +125,6 @@ export default function Avvvatars(params: Params)
   // there is 60 shapes so generate between 1 and 60
   const shapeKey = isFace ? randiman({ value, min: 1, max: 33 }) : randiman({ value, min: 1, max: 60 })
 
-  return Array.from(Array(32).keys()).map((v) => {
-    return <Wrapper
-        size={size}
-        color={BACKGROUND_COLORS[key].replace('#', '')}
-        $shadow={shadow}
-        $border={border}
-        $borderSize={borderSize}
-        $borderColor={borderColor}
-        $radius={radius}
-    >
-      {style === 'character' ?
-          <Text
-              color={SHAPE_COLORS[key].replace('#', '')}
-              size={size}
-          >
-            {name}
-          </Text>
-          :
-          <Shape
-              name={`${shapeType}${v+1}` as ShapeNames}
-              color={SHAPE_COLORS[key].replace('#', '')}
-              size={Math.round((size) / 100 * 50)}
-          />
-      }
-    </Wrapper>
-  })
   return (
     <Wrapper
       size={size}
