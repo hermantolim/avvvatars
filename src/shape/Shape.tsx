@@ -2,6 +2,7 @@ import * as React from 'react';
 import { ComponentType } from 'react'
 import { styled } from 'goober'
 import * as shapes from './shapes'
+import * as faces from './faces'
 import { ShapeProps } from './shapes'
 
 export type ShapeNames = keyof typeof shapes
@@ -27,8 +28,9 @@ export const shapeList = Object.keys(shapes)
 
 export default function Shape(props: Props){
   const { name, size = 24 } = props
+  const isFaces = name.startsWith('Face')
 
-  const Tag = (shapes as ShapeList)[name]
+  const Tag = isFaces ? (faces as ShapeList)[name] : (shapes as ShapeList)[name]
 
   if(!Tag) {
     // shape doen't exists

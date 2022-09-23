@@ -15,6 +15,7 @@ setup(React.createElement, undefined, undefined, (props: any) => {
 
 const DEFAULTS = {
   style: "character",
+  type: "default",
   size: 32,
   shadow: false,
   border: false,
@@ -78,6 +79,7 @@ const Text = styled('p')<{ color: string, size: number }>`
 `
 
 type Style = 'character' | 'shape'
+type Type = 'default' | 'face'
 interface Params
 {
   displayValue?: string
@@ -92,6 +94,7 @@ interface Params
   borderSize?: number
   borderColor?: string
   radius?: number
+  type?: Type
 }
 
 export default function Avvvatars(params: Params)
@@ -101,6 +104,7 @@ export default function Avvvatars(params: Params)
     displayValue,
     value,
     radius,
+    type = DEFAULTS.type,
     size = DEFAULTS.size,
     shadow = DEFAULTS.shadow,
     border = DEFAULTS.border,
@@ -111,12 +115,42 @@ export default function Avvvatars(params: Params)
   // get first two letters
   const name = String(displayValue || value).substring(0, 2);
 
+  const shapeType = type === 'default' ? 'Shape' : 'Face'
+  const isFace = shapeType === 'Face'
+
   // generate unique random for given value
   // there is 20 colors in array so generate between 0 and 19
   const key = randiman({ value, min: 0, max: BACKGROUND_COLORS.length - 1 });
-  // there is 60 shapes so generate between 1 and 60
-  const shapeKey = randiman({ value, min: 1, max: 60 })
 
+  // there is 60 shapes so generate between 1 and 60
+  const shapeKey = isFace ? randiman({ value, min: 1, max: 33 }) : randiman({ value, min: 1, max: 60 })
+
+  return Array.from(Array(32).keys()).map((v) => {
+    return <Wrapper
+        size={size}
+        color={BACKGROUND_COLORS[key].replace('#', '')}
+        $shadow={shadow}
+        $border={border}
+        $borderSize={borderSize}
+        $borderColor={borderColor}
+        $radius={radius}
+    >
+      {style === 'character' ?
+          <Text
+              color={SHAPE_COLORS[key].replace('#', '')}
+              size={size}
+          >
+            {name}
+          </Text>
+          :
+          <Shape
+              name={`${shapeType}${v+1}` as ShapeNames}
+              color={SHAPE_COLORS[key].replace('#', '')}
+              size={Math.round((size) / 100 * 50)}
+          />
+      }
+    </Wrapper>
+  })
   return (
     <Wrapper
       size={size}
@@ -136,7 +170,7 @@ export default function Avvvatars(params: Params)
         </Text>
         :
         <Shape
-          name={`Shape${shapeKey}` as ShapeNames}
+          name={`${shapeType}${shapeKey}` as ShapeNames}
           color={SHAPE_COLORS[key].replace('#', '')}
           size={Math.round((size) / 100 * 50)}
         />

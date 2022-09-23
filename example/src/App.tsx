@@ -14,6 +14,9 @@ function App() {
               <div className='avt'>
                   <Avvvatars value={value} style='shape' />
               </div>
+              <div className='avt'>
+                  <Avvvatars value={value} style='shape' type='face' />
+              </div>
           </div>
     </div>
   );
