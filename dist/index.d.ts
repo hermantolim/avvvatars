@@ -1,4 +1,5 @@
 /// <reference types="react" />
+export { default as randiman } from './lib/random';
 declare type Style = 'character' | 'shape';
 declare type Type = 'default' | 'face';
 interface Params {
@@ -14,4 +15,3 @@ interface Params {
     type?: Type;
 }
 export default function Avvvatars(params: Params): JSX.Element;
-export {};

@@ -2080,4 +2080,5 @@ function Avvvatars(params) {
 }
 
 export default Avvvatars;
+export { randomNumber as randiman };
 //# sourceMappingURL=avvvatars-react-alt.esm.js.map

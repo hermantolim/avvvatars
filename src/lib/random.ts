@@ -19,7 +19,6 @@ function minMax(opts: MinMax){
   return Math.floor(random * (max - min + 1) + min);
 }
 
-
 export default function randomNumber(opts: GenerateRandom){
   const { value, min, max } = opts
 

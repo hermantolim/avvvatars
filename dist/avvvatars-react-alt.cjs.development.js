@@ -2084,4 +2084,5 @@ function Avvvatars(params) {
 }
 
 exports.default = Avvvatars;
+exports.randiman = randomNumber;
 //# sourceMappingURL=avvvatars-react-alt.cjs.development.js.map
