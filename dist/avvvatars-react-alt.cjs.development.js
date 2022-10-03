@@ -2065,24 +2065,22 @@ function Avvvatars(params) {
     min: 1,
     max: 60
   });
-  return Array.from(Array(32).keys()).map(function (v) {
-    return React.createElement(Wrapper, {
-      size: size,
-      color: BACKGROUND_COLORS[key].replace('#', ''),
-      "$shadow": shadow,
-      "$border": border,
-      "$borderSize": borderSize,
-      "$borderColor": borderColor,
-      "$radius": radius
-    }, style === 'character' ? React.createElement(Text, {
-      color: SHAPE_COLORS[key].replace('#', ''),
-      size: size
-    }, name) : React.createElement(Shape, {
-      name: "" + shapeType + (v + 1),
-      color: SHAPE_COLORS[key].replace('#', ''),
-      size: Math.round(size / 100 * 50)
-    }));
-  });
+  return React.createElement(Wrapper, {
+    size: size,
+    color: BACKGROUND_COLORS[key].replace('#', ''),
+    "$shadow": shadow,
+    "$border": border,
+    "$borderSize": borderSize,
+    "$borderColor": borderColor,
+    "$radius": radius
+  }, style === 'character' ? React.createElement(Text, {
+    color: SHAPE_COLORS[key].replace('#', ''),
+    size: size
+  }, name) : React.createElement(Shape, {
+    name: "" + shapeType + shapeKey,
+    color: SHAPE_COLORS[key].replace('#', ''),
+    size: Math.round(size / 100 * 50)
+  }));
 }
 
 exports.default = Avvvatars;

@@ -20,11 +20,17 @@ code {
 .wpr {
   display: flex;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 .avt {
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+.ipt {
+  padding: 4rem 0;
+
 }

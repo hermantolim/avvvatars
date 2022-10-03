@@ -13,5 +13,5 @@ interface Params {
     radius?: number;
     type?: Type;
 }
-export default function Avvvatars(params: Params): JSX.Element | JSX.Element[];
+export default function Avvvatars(params: Params): JSX.Element;
 export {};

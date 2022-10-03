@@ -6,16 +6,21 @@ function App() {
 
   return (
     <div className="App">
+        <div className='ipt'>
+            <input type='text' value={value} onChange={(e) => setValue(e.currentTarget.value)} />
+        </div>
           <div className='wpr'>
-              <input type='text' value={value} onChange={(e) => setValue(e.currentTarget.value)} />
               <div className='avt'>
-                  <Avvvatars value={value} style='character' />
+                  <Avvvatars value={value} style='character' size={72}/>
+                  <span>TEXT</span>
               </div>
               <div className='avt'>
-                  <Avvvatars value={value} style='shape' />
+                  <Avvvatars value={value} style='shape' size={72} />
+                  <span>DEFAULT SHAPE</span>
               </div>
               <div className='avt'>
-                  <Avvvatars value={value} style='shape' type='face' />
+                  <Avvvatars value={value} style='shape' type='face' size={72} />
+                  <span>FACE SHAPE</span>
               </div>
           </div>
     </div>

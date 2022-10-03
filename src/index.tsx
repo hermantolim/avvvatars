@@ -3,6 +3,7 @@ import randiman from './lib/random'
 import { BACKGROUND_COLORS, SHAPE_COLORS } from './lib/colors'
 import Shape, { ShapeNames } from './shape/Shape'
 import { styled, setup } from 'goober'
+export { default as randiman } from './lib/random'
 
 // initialize goober
 setup(React.createElement, undefined, undefined, (props: any) => {
