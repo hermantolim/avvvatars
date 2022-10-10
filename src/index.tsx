@@ -79,6 +79,7 @@ type Style = 'character' | 'shape'
 type Type = 'default' | 'face'
 interface Params
 {
+  className?: string
   displayValue?: string
   // this should be unique to user, it can be email, user id, or full name
   value: string
@@ -97,6 +98,7 @@ interface Params
 export default function Avvvatars(params: Params)
 {
   const {
+    className,
     style = DEFAULTS.style,
     displayValue,
     value,
@@ -125,6 +127,7 @@ export default function Avvvatars(params: Params)
   return (
 
     <Wrapper
+      className={className}
       size={size}
       color={BACKGROUND_COLORS[key].replace('#', '')}
       $shadow={shadow}
