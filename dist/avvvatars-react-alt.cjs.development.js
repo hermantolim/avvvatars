@@ -2012,7 +2012,7 @@ var DEFAULTS = {
   borderSize: 2,
   borderColor: "#fff"
 };
-var Wrapper = /*#__PURE__*/goober.styled('div')(_templateObject$1 || (_templateObject$1 = /*#__PURE__*/_taggedTemplateLiteralLoose(["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  background-color: #", ";\n\n  ", "\n\n  box-sizing: border-box;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  user-select: none;\n\n  &:hover {\n    z-index: 3;\n  }\n\n  ", "\n"])), function (p) {
+var Wrapper = /*#__PURE__*/goober.styled('div')(_templateObject$1 || (_templateObject$1 = /*#__PURE__*/_taggedTemplateLiteralLoose(["\n  width: ", "px;\n  height: ", "px;\n  border-radius: ", "px;\n  background-color: #", ";\n\n  ", "\n\n  box-sizing: border-box;\n\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  user-select: none;\n\n  ", "\n"])), function (p) {
   return p.size;
 }, function (p) {
   return p.size;
@@ -2031,7 +2031,8 @@ var Text = /*#__PURE__*/goober.styled('p')(_templateObject2 || (_templateObject2
   return p.color;
 });
 function Avvvatars(params) {
-  var _params$style = params.style,
+  var className = params.className,
+      _params$style = params.style,
       style = _params$style === void 0 ? DEFAULTS.style : _params$style,
       displayValue = params.displayValue,
       value = params.value,
@@ -2066,6 +2067,7 @@ function Avvvatars(params) {
     max: 60
   });
   return React.createElement(Wrapper, {
+    className: className,
     size: size,
     color: BACKGROUND_COLORS[key].replace('#', ''),
     "$shadow": shadow,

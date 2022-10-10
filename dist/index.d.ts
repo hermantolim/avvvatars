@@ -3,6 +3,7 @@ export { default as randiman } from './lib/random';
 declare type Style = 'character' | 'shape';
 declare type Type = 'default' | 'face';
 interface Params {
+    className?: string;
     displayValue?: string;
     value: string;
     size?: number;
