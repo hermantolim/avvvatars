@@ -53,10 +53,6 @@ const Wrapper = styled('div')<WrapperProps>`
   align-items: center;
   user-select: none;
 
-  &:hover {
-    z-index: 3;
-  }
-
   ${p => p.$shadow && `
     box-shadow: 
       0px 3px 8px rgba(18, 18, 18, 0.04),  
@@ -127,6 +123,7 @@ export default function Avvvatars(params: Params)
   const shapeKey = isFace ? randiman({ value, min: 1, max: 33 }) : randiman({ value, min: 1, max: 60 })
 
   return (
+
     <Wrapper
       size={size}
       color={BACKGROUND_COLORS[key].replace('#', '')}
